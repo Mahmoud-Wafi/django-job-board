@@ -10,8 +10,11 @@ JOB_TYPE=(
     ,("Part Time","Part Time")
     )
        
-       
+class Category(models.Model):
+    nama=models.CharField(max_length=30)
     
+    def __str__(self) -> str:
+        return self.nama
 class Job(models.Model):
     
     title= models.CharField(max_length=50)
@@ -21,7 +24,7 @@ class Job(models.Model):
     publishAt=models.DateTimeField(auto_now=True)
     vacancy=models.IntegerField(default=1)
     salary= models.DecimalField(max_digits=10 , decimal_places=2)
-    # category=models.CharField(max_length=30) 
+    category=models.ForeignKey('Category' , on_delete=models.CASCADE)
     experience=models.IntegerField(default=1)
     gender=models.CharField( max_length= 10 , choices=GENDER_TYPE)
     
