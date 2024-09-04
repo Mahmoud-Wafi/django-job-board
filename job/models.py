@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify 
 
 # Create your models here.
 GENDER_TYPE=(
@@ -32,7 +33,12 @@ class Job(models.Model):
     gender=models.CharField( max_length= 10 , choices=GENDER_TYPE)
     image = models.ImageField(upload_to=image_upload)
     
+    slug= models.SlugField(null=True , blank=True)
     
+    
+    def save(self , *args , **kwargs):
+        self.slug = slugify(self.title)
+        super(Job,self).save(*args,**kwargs)
     
     
     
