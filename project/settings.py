@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap4',
     'job.apps.JobConfig',
     'django.contrib.admin',
     'django.contrib.auth',
