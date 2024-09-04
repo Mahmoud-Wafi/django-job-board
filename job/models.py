@@ -12,9 +12,12 @@ JOB_TYPE=(
        
 class Category(models.Model):
     nama=models.CharField(max_length=30)
-    
     def __str__(self) -> str:
         return self.nama
+def image_upload(instance, filename):
+    image_name, extension = filename.split(".")
+    return f"Jobs/{instance.id}.{extension}"
+
 class Job(models.Model):
     
     title= models.CharField(max_length=50)
@@ -27,6 +30,7 @@ class Job(models.Model):
     category=models.ForeignKey('Category' , on_delete=models.CASCADE)
     experience=models.IntegerField(default=1)
     gender=models.CharField( max_length= 10 , choices=GENDER_TYPE)
+    image = models.ImageField(upload_to=image_upload)
     
     
     
