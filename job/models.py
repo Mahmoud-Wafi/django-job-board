@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify 
-
+from django.contrib.auth.models import User
 # Define choices for gender and job type
 GENDER_TYPE = (
     ("Male", "Male"),
@@ -23,6 +23,7 @@ def image_upload(instance, filename):
     return f"Jobs/{instance.id}.{extension}"
 
 class Job(models.Model):
+    owner= models.ForeignKey(User,related_name='job_owner',on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     job_type = models.CharField(max_length=15, choices=JOB_TYPE)
     description = models.TextField()

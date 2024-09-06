@@ -32,6 +32,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_filters',
+    'contact.apps.ContactConfig',
+    'phonenumber_field',
+    'accounts.apps.AccountsConfig',
     'bootstrap4',
     'job.apps.JobConfig',
     'django.contrib.admin',
