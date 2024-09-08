@@ -69,6 +69,6 @@ def profile_edit(request):
     return render(request, 'accounts/profile_edit.html', context)
 
 
-def logout(request):
-    auth_logout(request)
-    return redirect('accounts:login')  
+# def logout(request):
+#     auth_logout(request)
+#     return redirect('accounts:login')  
